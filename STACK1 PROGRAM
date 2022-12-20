@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define SIZE 4
+int top=-1;
+int inp_arr[SIZE];
+void push();
+void pop();
+void show();
+int main()
+{
+int choice;
+while(1)
+{
+printf("Op performed by stack\n");
+printf("1-push\n ");
+printf("2-pop\n");
+printf("3-show\n");
+printf("4-exit\n");
+
+printf("enter the choice\n");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1: push();
+break;
+case 2: pop();
+break;
+case 3: show();
+break;
+case 4: exit(0);
+break;
+default: 
+printf("invalid choice\n");
+}}}
+void push()
+{
+int x;
+if(top==SIZE-1)
+{
+printf("overflow\n");
+}
+else 
+{
+printf("enter the element to be inserted\n");
+scanf("%d",&x);
+top=top+1;
+inp_arr[top]=x;
+}}
+void pop()
+{
+int x;
+if(top==-1)
+{
+printf("underflow\n");
+}
+else
+{
+printf("removed element %d\n",inp_arr[top]);
+top--;
+}}
+void show()
+{
+int i;
+
+
+for(i=0;i<=top;i++)
+{
+printf("%d\t",inp_arr[i]);
+}
+}
+
