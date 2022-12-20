@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+char stack[50];
+int top=-1;
+     void push(char x)    //to push element
+       {
+          stack[1+top]=x;
+        }
+     char pop()         // here the character is popped
+        {
+          if(top==-1)
+          return -1;
+          else
+          return stack[top--];
+        }
+     int priority(char x)  //to check the priority 
+      {  
+         if(x=='(')
+         return 0;
+         if(x=='+'||x=='-')
+         return 1;
+         if(x=='*'||x=='/')
+         return 2;
+      }
+     int main()      //main function
+     {
+      char exp[20];
+      char *e,x;
+      printf("enter the expression\n");    // expression is entered in the following step
+      scanf("%s",exp);
+      e=exp;
+         while(*e!='\0')
+         {
+        if (isalnum(*e))
+        printf("%c",*e);
+        else
+        if(*e=='(')   // condition for when it is (
+        push(*e);
+        else if(*e==')')
+         {
+          while ((x=pop())!='(')
+          printf("%c",x);
+         }
+        else
+         {
+           while(priority(stack[top])>=priority(*e));
+           printf("%c",pop());
+           push(*e);
+         }
+          e++;
+         }
+         while(top!=-1)
+          {
+          printf("%c",pop());  //the elements are printed 
+          }
+          return 0;
+          printf("\n");   
+        }
